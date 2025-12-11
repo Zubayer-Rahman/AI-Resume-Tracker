@@ -1,5 +1,7 @@
+import { resumes } from "../../Constants";
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
+import Navbar from "~/components/navbar";
+import ResumeCard from "~/components/ResumeCard";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -10,8 +12,20 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return(
-    <main>
+    <main className="bg-[url('public/images/bg-main.svg')] bg-cover">
+      <Navbar />
 
+      <section className="main-section">
+        <div className="page-heading">
+          <h1>Track Your Application & Resume Ratings</h1>
+          <h2>Review your submission and check AI-powered feedback</h2>
+        </div>
+      </section>
+
+
+      {resumes.map((resume) => (
+        <ResumeCard />
+      ))}
     </main>
   );
 }
